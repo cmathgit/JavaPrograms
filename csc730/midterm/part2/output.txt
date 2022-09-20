@@ -1,0 +1,2 @@
+booboo has equal halves.
+abcab does not have equal halves.
