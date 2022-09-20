@@ -4,8 +4,6 @@
 @ECHO OFF
 color 0a
 
-::cd "C:\Users\C\Desktop\JavaPrograms\csc730\hw_3"
-
 :: compile the java source code and place the class files containing the byte code in the user-defined package and place it in the pwd 
 :: javac -d . HomeWork3App.java
 
