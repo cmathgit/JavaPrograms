@@ -35,7 +35,7 @@ cat id_rsa.pub | clip
 # How to clone repo to original machine with SSH (may be password protected)
 # open the repo you want to clone from Github account: Code >> SSH >> copy <repository_url>
 ```
-git@github.com:<username>/JavaPrograms.git
+git@github.com:<username>/repo_name.git
 ```
 # in a new shell, open the directory where you want the repo to be cloned
 ```
@@ -46,7 +46,7 @@ git status
 # How to clone repo to any machine with SSH (may be password protected)
 # open the repo you want to clone from Github account: Code >> HTTPS >> copy <repository_url>
 ```
-https://github.com/username/JavaPrograms.git
+https://github.com/username/repo_name.git
 ```
 # in a new shell, open the directory where you want the repo to be cloned
 ```
@@ -71,7 +71,27 @@ git commit -m "upload most recent changes"
 ```
 git push
 ```
-  
+# Pull from an existing repo
+```
+git pull.config rebase true
+git pull git@github.com:username/repo_name.git
+```
+# or
+```
+git pull https://github.com/username/repo_name.git
+```
+# Merge with an existing repog
+```
+git pull.config rebase false
+git pull git@github.com:username/reponame.git
+``` 
+# Fetch from an existing repo
+```
+git fetch git@github.com:username/reponame.git
+```
+
+
+ 
 # How to compile Java in Unix / Linux
 ```
 javac -d classes/ -cp lib/sample-1.jar src/project/Example.java -verbose -Xlint:unchecked
