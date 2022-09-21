@@ -42,6 +42,7 @@ package homework4app;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.lang.Math;
 
 public class HomeWork4App
 {
@@ -68,7 +69,7 @@ public class HomeWork4App
                     arr.display();
                     break;
                 case 4:
-                    arr.quickSort();
+                    arr.median();
                     break;
                 case 0:
                     break;
@@ -156,35 +157,15 @@ class MyArray
 	
     /**
      * 
-     * Use quick sort algorithm to sort elements a[0] ~ a[n-1] in non-decreasing order
-     */
-    public void quickSort()
-    {
-        quickSort(0, n - 1);
-    }
-    
-    /**
-     * 
      * Recursive helper function
      * Use quick sort algorithm to sort elements a[left] ~ a[right] in non-decreasing order
      */
-    public void quickSort(int left, int right)
+    public void median()
     {
-	if (left < right)
-        {	
-            // partition a[left] ~ a[right] and move pivot into a[i], 
-            // such that a[left] ~ a[i-1] are no greater than a[i] and 
-            // a[i+1] ~ a[right] are no less than a[i]
-            int i = partition(left, right);   
-            
-            // sort a[left] ~ a[i-1]
-            quickSort(left, i-1);
-            
-            // sort a[i+1] ~ a[right]
-            quickSort(i+1, right);
-        }
+       System.out.println("Median: " +median(0, n - 1));
     }
-  
+   
+	 
     /**
      * 
      * You can use the partitioning strategy of quick sort to find the k-th smallest element in an
@@ -194,37 +175,83 @@ class MyArray
 	 * • If Smaller contains k-1 elements, the k-th smallest element is the pivot.
 	 * • If Smaller contains fewer than k-1 element, the k-th smallest element is in Large.
      */
-   /* public void partition()
+    public int median(int left, int right)
     {
-        partition(0, n - 1);
+		
+		System.out.println("left and right are " + left + " and " + right + ", respectively.");
+		if (left <= right)
+        {	
+	
+			System.out.println("left and right are " + left + " and " + right + ", respectively.");
+            // partition a[left] ~ a[right] and move pivot into a[i], 
+            // such that a[left] ~ a[i-1] are no greater than a[i] and 
+            // a[i+1] ~ a[right] are no less than a[i]
+			int i = partition(left, right);  // potential pivot index
+			double k = (double)n / 2;					 // kth smallest element	
+			System.out.println("k is " + k);
+			int kth = (int) Math.ceil(k);			// round k up		
+			System.out.println("i and k are " + i + " and " + kth + ", respectively.");
+
+			if (i > kth-1) //If Smaller contains k or more elements, it must contain the k-th smallest element
+			{
+				System.out.println("Smaller must contain the k-th smallest element!");
+				//  a[left] ~ a[i-1]
+				return median(left, i-1); // Smaller subarray
+				//return (int) Math.ceil((double)(a[left] + a[i-1]) / 2);
+				//return a[right-1];
+			}
+			else if (i == kth-1) //If Smaller contains k-1 elements, the k-th smallest element is the pivot
+			{
+				System.out.println("the k-th smallest element, " + kth + ", is the pivot!");	
+				//return kth;
+				//return a[kth];
+				//return (int) Math.ceil((double)(a[kth] + a[right-1]) / 2);
+				return (a[kth] + a[n-2]) / 2;
+			}
+			else if (i < kth-1) //If Smaller contains fewer than k-1 element, the k-th smallest element is in Larger
+			{
+				System.out.println("the k-th smallest element is in Larger!");
+				//  a[i+1] ~ a[right]
+				return median(i+1, right); // Larger subarray				
+				//return (int) Math.ceil((double)(a[i] + a[right]) / 2);
+				//return a[i];
+			}
+        }
+		
+		return -1;
     }
-*/
+  
     /**
      * 
      * Recursive helper function
      * find the kth smallest element in the array. when found, find the median
      */
     public int partition(int left, int right)
-    {	
+    {		
         boolean lr = true;
         
-	while (left < right)
-	{
-		if (a[left] > a[right])
-		{	
-                    int t = a[left];
-                    a[left] = a[right];
-                    a[right] = t;
+		while (left < right)
+		{
+			if (a[left] > a[right])
+			{	
+				/*int t = a[left];
+				a[left] = a[right];
+				a[right] = t;*/
                     
-                    lr = !lr;
+				lr = !lr;
+			}
+        
+			//System.out.println("left and right are " + left + " and " + right + ", respectively.");
+        
+			if (lr)	
+				right--;
+			else		
+				left++;	
 		}
-                
-		if (lr)	
-                    right--;
-		else		
-                    left++;
-	}
-	return left;
+		
+		
+		//System.out.println("left: " + left);
+		return left;
     }    
 }
 
