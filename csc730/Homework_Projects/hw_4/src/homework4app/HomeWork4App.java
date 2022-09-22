@@ -69,7 +69,7 @@ public class HomeWork4App
                     arr.display();
                     break;
                 case 4:
-                    arr.median();
+                    arr.kthMedian();
                     break;
                 case 0:
                     break;
@@ -160,9 +160,9 @@ class MyArray
      * Recursive helper function
      * Use quick sort algorithm to sort elements a[left] ~ a[right] in non-decreasing order
      */
-    public void median()
+    public void kthMedian()
     {
-       System.out.println("Median: " +median(0, n - 1));
+       System.out.println("Median (k-th smallest number in the series): " + kthMedian(0, n - 1));
     }
    
 	 
@@ -175,50 +175,55 @@ class MyArray
 	 * • If Smaller contains k-1 elements, the k-th smallest element is the pivot.
 	 * • If Smaller contains fewer than k-1 element, the k-th smallest element is in Large.
      */
-    public int median(int left, int right)
+    public int kthMedian(int left, int right)
     {
+		// debug-code
+		//System.out.println("left and right are " + left + " and " + right + ", respectively.");
 		
-		System.out.println("left and right are " + left + " and " + right + ", respectively.");
-		if (left <= right)
+		if (left < right)
         {	
 	
-			System.out.println("left and right are " + left + " and " + right + ", respectively.");
+			// debug-code
+			//System.out.println("left and right are " + left + " and " + right + ", respectively.");
             // partition a[left] ~ a[right] and move pivot into a[i], 
             // such that a[left] ~ a[i-1] are no greater than a[i] and 
             // a[i+1] ~ a[right] are no less than a[i]
 			int i = partition(left, right);  // potential pivot index
-			double k = (double)n / 2;					 // kth smallest element	
-			System.out.println("k is " + k);
-			int kth = (int) Math.ceil(k);			// round k up		
-			System.out.println("i and k are " + i + " and " + kth + ", respectively.");
+			
+			// determine the kth smallest element	
+			// We are looking for the ((n+1)/2)-th smallest number if n is odd and n/2 if n is even among the given numbers, where n is the size of given collection.
+			double k = (double)n / 2; // if n is even, k will be a whole number, and if n is odd, k will need to be rounded up
+			//System.out.println("k is " + k);
+			int kth = (int) Math.ceil(k);			// round k up if the operation returns a double
+		
+			// debug-code
+			//System.out.println("i and k are " + i + " and " + kth + ", respectively.");
 
-			if (i > kth-1) //If Smaller contains k or more elements, it must contain the k-th smallest element
+			// recursively call the function until the k-th smallest index is found, that is, the (n/2)-th smallest index in the series
+			if (i > kth) //If Smaller contains k or more elements, it must contain the k-th smallest element
 			{
-				System.out.println("Smaller must contain the k-th smallest element!");
+				// debug-code
+				//System.out.println("Smaller must contain the k-th smallest element!");
 				//  a[left] ~ a[i-1]
-				return median(left, i-1); // Smaller subarray
-				//return (int) Math.ceil((double)(a[left] + a[i-1]) / 2);
-				//return a[right-1];
+				return kthMedian(left, i-1); // Smaller subarray
 			}
-			else if (i == kth-1) //If Smaller contains k-1 elements, the k-th smallest element is the pivot
+			else if (i == kth) //If Smaller contains k-1 elements, the k-th smallest element is the pivot
 			{
-				System.out.println("the k-th smallest element, " + kth + ", is the pivot!");	
-				//return kth;
-				//return a[kth];
-				//return (int) Math.ceil((double)(a[kth] + a[right-1]) / 2);
-				return (a[kth] + a[n-2]) / 2;
+				// debug-code
+				//System.out.println("the k-th smallest element, " + i + ", is the pivot!");	
+				return a[i-1]; // a[kth-1] is the kth smallest element
 			}
-			else if (i < kth-1) //If Smaller contains fewer than k-1 element, the k-th smallest element is in Larger
+			else if (i < kth) //If Smaller contains fewer than k-1 element, the k-th smallest element is in Larger
 			{
-				System.out.println("the k-th smallest element is in Larger!");
+				// debug-code
+				//System.out.println("the k-th smallest element is in Larger!");
 				//  a[i+1] ~ a[right]
-				return median(i+1, right); // Larger subarray				
-				//return (int) Math.ceil((double)(a[i] + a[right]) / 2);
-				//return a[i];
+				return kthMedian(i+1, right); // Larger subarray				
 			}
         }
 		
-		return -1;
+		// returnsmallest element is found
+		return a[left-1];
     }
   
     /**
@@ -234,13 +239,14 @@ class MyArray
 		{
 			if (a[left] > a[right])
 			{	
-				/*int t = a[left];
+				int t = a[left];
 				a[left] = a[right];
-				a[right] = t;*/
+				a[right] = t;
                     
 				lr = !lr;
 			}
         
+			// debug-code
 			//System.out.println("left and right are " + left + " and " + right + ", respectively.");
         
 			if (lr)	
@@ -249,7 +255,7 @@ class MyArray
 				left++;	
 		}
 		
-		
+		// debug-code
 		//System.out.println("left: " + left);
 		return left;
     }    
