@@ -50,6 +50,7 @@ public class Example15ExpressionTree
                 System.out.println("1: Prefix ");
                 System.out.println("2: Infix ");
                 System.out.println("3: Postfix ");
+				System.out.println("4: Evaluate Expression"); // Cruz Macias
                 System.out.println("Other to exit ");
                 
                 option = input.nextInt();
@@ -205,6 +206,11 @@ class ExpressionTree
             case 3:
                 postfix(root);
                 break;
+			case 4: // Cruz Macias
+				System.out.print("\n" + evaluateExpression(root) + " is the result of evaluating the entered infix expression, ");
+				infix(root);
+				System.out.print(", as a tree.\n");
+				break;
             default:
                 flag = -1;
         }
@@ -264,9 +270,62 @@ class ExpressionTree
     }
     
     /**
-     * 
+     * Programmer: Cruz Macias
+	 * Added: 9/23/2022
      * Practice problem:
      * Write a function to evaluate the expression represented by the expression tree
      * Hint: borrow ideas from function infix(TreeNode tn)
+	 * Assumptions: 
+		1. If the data member of the TreeNode object is numeric, only single digit numerals, that is the arabic numerals 1-9, will be considered. If two consectutive integers are entered, e.g., 10 or 11, the second character will be ignored.
+		2. If the data member of the TreeNode object is any of the arabic numerals 1-9, then 48.0 will be subracted from it after it is cast as a double before returning as an operand to be evaluated.
+		3. If the data member of the TreeNode object is a alphabetical character (A-Z or a-z), then it will be processed according to its respective ascii decimal code, e.g., a = 97.0.
+		4. If a data member of the TreeNode object is a special character, e.g., $ or ! or &, then it will be converted to the appropriate ascii code and processed as a leaf node. open and closed parentheses, brackets, and braces will be ignored.
      */
+    double evaluateExpression(TreeNode tn)
+    {
+		double result = 0.0;
+		
+        if (tn == null)
+            return result;
+        
+        if (tn.data != '+' && tn.data != '-' && tn.data != '*' && tn.data != '/' && tn.data != '(' && tn.data != ')' && tn.data != '[' && tn.data != ']' && tn.data != '{' && tn.data != '}')	// tn is an operand - Leaf Node
+		{
+			// process alpha-numeric characters accordingly as described in the assumptions of the function description
+			if (tn.data == '0' || tn.data == '1' || tn.data == '2' || tn.data == '3' || tn.data == '4' || tn.data == '5' || tn.data == '6' || tn.data == '7' || tn.data == '8' || tn.data == '9')
+			{
+				System.out.println("ASCII decimal code of the alpha-numeric character " + tn.data + " as a double is " + (double) tn.data);
+				result = (((double) tn.data) - 48.0);
+				System.out.println("This character is numeric and " + (double) tn.data + " has been converted to " + result + " for processing.");
+			}
+			else
+			{
+				result = (double) tn.data;
+				System.out.println("ASCII decimal code of the alpha-numeric character " + tn.data + " as a double is " + result);
+				System.out.println("This character is alphabetic and " + tn.data + " has been converted to " + result + " for processing.");
+			}
+			
+
+			return result;
+		}
+        else // tn is an operator - Parent/Child Node
+        {
+			switch(tn.data)
+			{
+				case '+':
+					result = evaluateExpression(tn.left) + evaluateExpression(tn.right);
+					break;
+				case '-':
+					result = evaluateExpression(tn.left) - evaluateExpression(tn.right);
+					break;
+				case '*':
+					result = evaluateExpression(tn.left) * evaluateExpression(tn.right);
+					break;
+				case '/':
+					result = evaluateExpression(tn.left) / evaluateExpression(tn.right);
+				default:
+					// Do Nothing - we found and open or closed parenthesis, bracket, or brace 
+			}
+			return result;
+        }
+    }
 }
