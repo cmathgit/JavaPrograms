@@ -322,6 +322,7 @@ class ExpressionTree
 					break;
 				case '/':
 					result = evaluateExpression(tn.left) / evaluateExpression(tn.right);
+					break;
 				default:
 					// Do Nothing - we found and open or closed parenthesis, bracket, or brace 
 			}
