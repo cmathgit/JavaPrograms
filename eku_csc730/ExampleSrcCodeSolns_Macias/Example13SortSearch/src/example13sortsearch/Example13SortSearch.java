@@ -2,11 +2,29 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * to compile in MS-DOS JDK 18.0.2 with user-defined packages, execute:
+ *		javac -d . Example13SortSearch.java
+ * to run the program, execute:
+ *		java example13sortsearch.Example13SortSearch
+ * to compile in MS-DOS JDK 18.0.2 without user-defined packages, execute:
+ *		javac Example13SortSearch.java
+ * to run the program, execute:
+ *		java Example13SortSearch
+ * alternatively, starting with Java SE 11, you can run the program without compiling 
+ *		if the main class is at the start of the program by simply executing 
+ * 			java Example13SortSearch.java
+ * this command will not run the program if the main class is after a different class definition
+ * alternative compile options
+ * list what the compiler is doing
+ * javac -d . Example13SortSearch.java -verbose
+ *
+ * to list warning details
+ * javac -d . Example13SortSearch.java -Xlint:unchecked
  */
 package example13sortsearch;
 
 /**
- *
+ * @revisions: Cruz Macias
  * @author Yang
  */
 
