@@ -23,12 +23,13 @@
  */
 package example17binarysearchtree;
 
-/**
- *
- * @author Yang
- */
+/***************
+ * @programmer: Cruz Macias
+ * @contributor(s): Dr. Yang
+ ***************/
 
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Example17BinarySearchTree 
 {
@@ -56,6 +57,7 @@ public class Example17BinarySearchTree
             System.out.println("4. Remove node");
 			System.out.println("5. Display all data in the binary search tree in decreasing order.");
 			System.out.println("6. Count the number of nodes in the binary search tree.");
+			System.out.println("7. Determine the height of the binary search tree.");
             System.out.println("0. Exit");
 
             option = input.nextInt();
@@ -83,6 +85,9 @@ public class Example17BinarySearchTree
 					break;
 				case 6:
 					bst.countBin();
+					break;
+				case 7:
+					bst.heightBin();
 					break;
                 case 0:
                     break;
@@ -393,6 +398,24 @@ class BinarySearchTree
      * 
      * Practice problem:
      * Write a function that returns height of the binary search tree 
+	 * Helper function
      */
-    
+     public void heightBin() {
+		System.out.println("The height of the tree is " + (treeHeight(root) - 1));
+	}
+	
+	
+    /**
+     * 
+     * Practice problem:
+     * Write a function that returns height of the binary search tree 
+	 * does all the heavy lifting
+     */
+    public int treeHeight(TreeNode r)
+    {
+        if (r == null)
+			return 0;
+		
+		return treeHeight(r.left) + 1;
+    }  
 }
