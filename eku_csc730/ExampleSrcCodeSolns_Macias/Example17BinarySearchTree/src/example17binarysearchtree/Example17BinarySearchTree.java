@@ -55,6 +55,7 @@ public class Example17BinarySearchTree
             System.out.println("3. Insert node");
             System.out.println("4. Remove node");
 			System.out.println("5. Display all data in the binary search tree in decreasing order.");
+			System.out.println("6. Count the number of nodes in the binary search tree.");
             System.out.println("0. Exit");
 
             option = input.nextInt();
@@ -79,6 +80,10 @@ public class Example17BinarySearchTree
                     break;
 				case 5:
 					bst.printBin();
+					break;
+				case 6:
+					bst.countBin();
+					break;
                 case 0:
                     break;
                 default:
@@ -358,8 +363,31 @@ class BinarySearchTree
      * 
      * Practice problem:
      * Write a function that returns the number of nodes in the binary search tree 
+	 * Helper function
      */
-    
+     public void countBin() {
+		System.out.println("The number of nodes is " + noNodes(root));
+	}
+	
+	
+    /**
+     * 
+     * Practice problem:
+     * Write a function that returns the number of nodes in the binary search tree
+	 * does all the heavy lifting
+     */
+    public int noNodes(TreeNode r)
+    {
+		int count = 0;
+        if (r == null)
+            return 0;
+        
+        count += noNodes(r.right);
+        count += 1;
+        count += noNodes(r.left);
+		
+		return count;
+    }   
     
     /**
      * 
