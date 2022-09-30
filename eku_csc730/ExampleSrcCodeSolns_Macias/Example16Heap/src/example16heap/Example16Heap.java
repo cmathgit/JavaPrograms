@@ -2,32 +2,77 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * to compile in MS-DOS JDK 18.0.2 with user-defined packages, execute:
+ *		javac -d . Example16Heap.java
+ * to run the program, execute:
+ *		java example16heap.Example16Heap
+ * to compile in MS-DOS JDK 18.0.2 without user-defined packages, execute:
+ *		javac Example16Heap.java
+ * to run the program, execute:
+ *		java Example16Heap
+ * alternatively, starting with Java SE 11, you can run the program without compiling 
+ *		if the main class is at the start of the program by simply executing 
+ * 			java Example16Heap.java
+ * this command will not run the program if the main class is after a different class definition
+ * alternative compile options
+ * list what the compiler is doing
+ * javac -d . Example16Heap.java -verbose
+ *
+ * to list warning details
+ * javac -d . Example16Heap.java -Xlint:unchecked
  */
 package example16heap;
 
-/**
- *
- * @author Yang
- */
+/***************
+ * @programmer: Cruz Macias
+ * @contributor(s): Dr. Yang
+ ***************/
 
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Example16Heap 
 {
     public static void main(String[] args) 
     {
         Scanner input = new Scanner(System.in);
-
-        Heap myheap = new Heap(100);
+		Heap cHeap = new Heap(100);
+		
+        int option;
+        do
+        {
+            System.out.println("Select from:\n1. Read items and build heap\n2. Display heap\n3. Insert a node\n4. Remove the largest node\n5. Search for a key\n0. Exit");
+            option = input.nextInt();
+            switch (option)
+            {
+                case 1:
+					cHeap.build();
+                    break;
+                case 2:
+					cHeap.displayBreadthFirst();	
+                    break;
+                case 3:
+                    cHeap.insert();
+                    break;
+                case 4:
+                    cHeap.remove();
+                    break;
+                case 5:
+                    cHeap.search();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Invalid option!  Try again: ");
+            }
+            
+        } while (option != 0);
         
-        // heapsort
-        System.out.print("The sorted list: ");
-	while (!myheap.isEmpty())		
-            System.out.print(myheap.remove() + " ");
-        System.out.println();
-    }
-    
-}
+        System.out.println("Thanks for using my program.");
+    } // End main class    
+} //End Example16Heap class
+
+
 
 /**
  * 
@@ -41,30 +86,45 @@ class Heap
     public Heap(int size)
     {
         a = new int[size];
-	n = 0;                      // initialized with an empty heap
+		n = 0;                      // initialized with an empty heap
         
-        build();                    // build the heap: bottom-up approach
+        //build();                    // build the heap: bottom-up approach
     }
 
     public void build()
     {
-        // Store a set of data items into the array. They will make a heap without any adjustment
-        a[0] = 95;
-        a[1] = 81;
-        a[2] = 72;
-        a[3] = 39;
-        a[4] = 53;
-        a[5] = 71;
-        a[6] = 23;
-        a[7] = 38;
-        a[8] = 34;
-        a[9] = 6;
-        n = 10;
-        
         // In the homework assignment, need to remove the above 11 statements and replace them with your own code that
-        // 1) ask the user to enter non-negative intergers (negative to stop)
+        // 1) ask the user to enter non-negative integers (negative to stop)
         // 2) use the entered non-negative integers to build a heap using the algorithm discussed in class
-        
+		Scanner input = new Scanner(System.in);
+
+        int temp;
+		int idx = 0;
+
+		System.out.print("Enter keys (negative to stop): ");
+
+		// insert nodes without worrying about the heap condition
+        while (true)
+        {
+            temp = input.nextInt();
+            
+			if (temp < 0)    break;
+                
+			a[idx] = temp;          // insert a new node
+			
+			idx++;
+        }	
+		
+		System.out.println();
+		n = idx; // assign the size of the heap to class member
+		// recover the heap condition from bottom up
+		while(true)
+		{
+			if (idx < 0) break;
+			
+			downHeap(idx);
+			idx--;
+		}			
     }
     
     public boolean isEmpty()
@@ -125,5 +185,91 @@ class Heap
         else					// right child is larger
             return 2 * i + 2;
     }
+	
+    /**
+     * Display the contents of the Heap using breadth-first traversal
+     */
+	public void displayBreadthFirst()
+	{
+		/*for(int j = 0; j < n; j++)
+			System.out.println("a[" + j + "] = " + a[j]);*/
+		
+		int e = 0;
+		int fe;
+		
+		System.out.println("Heap:");
+		for(int i = 0; i < n; i++)
+		{	
+			System.out.print(a[i] + " ");		
+			
+			if(i == (2*(Math.pow(2, e)-1))) //print a newline at the end of each level of the heap
+			{
+				System.out.println();
+				e++;
+			}
+		}
+		
+		System.out.println();
+	}
+	
+    /**
+     * Insert a new node into the heap
+     */
+	public void insert()
+	{
+		Scanner input = new Scanner(System.in);
+
+        int temp;
+		int idx = n;
+		System.out.print("Enter a non-negative integer to be inserted: ");
+
+		// insert nodes without worrying about the heap condition
+		temp = input.nextInt();
+            
+		if (temp < 0)
+			System.out.println("Invalid option!  Try again: ");
+        else
+		{
+			a[n] = temp;         // insert a new node
+			n++;
+		}
+		
+		System.out.println();
+		// recover the heap condition from bottom up
+		while(true)
+		{
+			if (idx < 0) break;
+			
+			downHeap(idx);
+			idx--;
+		}	
+	}
+	
+	
+    /**
+     * Search the heap for a specified key and print the index of the key in the array
+     * Implement a recursive approach to search for the given key in a sorted array using binary search algorithm
+     * Search the heap for a specified key and print the index of the key in the array
+     */    
+    public void search()
+    {
+		Scanner input = new Scanner(System.in);
+		int result = -1;
+        int temp;
+		System.out.print("Enter the key to be searched for: ");
+		temp = input.nextInt();
+		
+		for(int i = 0; i < n; i++)
+		{
+			if(a[i] == temp)
+				result = i;
+		}
+		
+		if (result < 0)
+			System.out.println(temp + " NOT found");
+		else
+			System.out.println(temp + " found at index " + result);
+
+	}
 }
 
