@@ -54,6 +54,7 @@ public class Example17BinarySearchTree
             System.out.println("2. Search");
             System.out.println("3. Insert node");
             System.out.println("4. Remove node");
+			System.out.println("5. Display all data in the binary search tree in decreasing order.");
             System.out.println("0. Exit");
 
             option = input.nextInt();
@@ -76,6 +77,8 @@ public class Example17BinarySearchTree
                     System.out.print("Enter the key to be removed: ");
                     bst.remove(input.nextInt());
                     break;
+				case 5:
+					bst.printBin();
                 case 0:
                     break;
                 default:
@@ -328,9 +331,29 @@ class BinarySearchTree
      * 
      * Practice problem:
      * Write a function that displays all data in the binary search tree in decreasing order
+	 * Helper function
      */
-    
-    
+    public void printBin() {
+		reverseOrder(root);
+	}
+	
+	
+    /**
+     * 
+     * Practice problem:
+     * Write a function that displays all data in the binary search tree in decreasing order
+	 * does all the heavy lifting
+     */
+    public void reverseOrder(TreeNode r)
+    {
+        if (r == null)
+            return;
+        
+        reverseOrder(r.right);
+        System.out.print(r.data + " ");
+        reverseOrder(r.left);
+    }
+	 
     /**
      * 
      * Practice problem:
