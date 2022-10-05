@@ -241,9 +241,12 @@ class MyArray
         // compute the starting increment factor k (the largest that is less than n)
         int k = 1;
         while (k < n)
-            k = 3 * k - 1;
+			k = 2 * k + 1;
+            //k = 3 * k - 1;
         
-        k = (k + 1) / 3;       
+        //k = (k + 1) / 3;    
+		k = (k - 1) / 2; 
+		
         
         // for each round of the algorithm (each round uses a different k)
         while (k > 0)
@@ -251,7 +254,8 @@ class MyArray
             for (int j = 0; j < k; j++)     // among k subgroups of elements
                 insertionSort(n, j, k);     // do insertion sort within the j-th subgroup 
 
-            k = (k+1)/3;
+            //k = (k+1)/3;
+			k = (k - 1) / 2; 	
 	}
     }
     
@@ -321,7 +325,7 @@ class MyArray
 		if (lr)	
                     right--;
 		else		
-                    left++;
+                    left++;	
 	}
 	return left;
     }    
