@@ -84,10 +84,12 @@ public class Example17BinarySearchTree
 					bst.printBin();
 					break;
 				case 6:
-					bst.countBin();
+					//bst.countBin();
+					bst.nodeCount();
 					break;
 				case 7:
-					bst.heightBin();
+					//bst.heightBin();
+					bst.height();
 					break;
                 case 0:
                     break;
@@ -370,18 +372,21 @@ class BinarySearchTree
      * Write a function that returns the number of nodes in the binary search tree 
 	 * Helper function
      */
-     public void countBin() {
+	 /*public void countBin() {
 		System.out.println("The number of nodes is " + noNodes(root));
-	}
-	
-	
+	}*/
+     public void nodeCount()
+	 {
+		  System.out.println("The number of nodes is " + nodeCount(root));
+	 }
+
     /**
      * 
      * Practice problem:
      * Write a function that returns the number of nodes in the binary search tree
 	 * does all the heavy lifting
      */
-    public int noNodes(TreeNode r)
+    /*public int noNodes(TreeNode r)
     {
 		int count = 0;
         if (r == null)
@@ -392,18 +397,27 @@ class BinarySearchTree
         count += noNodes(r.left);
 		
 		return count;
-    }   
-    
+    } */  
+	public int nodeCount(TreeNode r)
+	{
+		if(r == null)
+			return 0;
+		else
+			return (nodeCount(r.left) + nodeCount(r.right) + 1);
+	}
+
     /**
      * 
      * Practice problem:
      * Write a function that returns height of the binary search tree 
 	 * Helper function
      */
-     public void heightBin() {
+    /*public void heightBin() {
 		System.out.println("The height of the tree is " + (treeHeight(root) - 1));
+	}*/
+	public void height() {
+		System.out.println("The height of the tree is " + (height(root));
 	}
-	
 	
     /**
      * 
@@ -411,11 +425,25 @@ class BinarySearchTree
      * Write a function that returns height of the binary search tree 
 	 * does all the heavy lifting
      */
-    public int treeHeight(TreeNode r)
+    /*public int treeHeight(TreeNode r)
     {
         if (r == null)
 			return 0;
 		
 		return treeHeight(r.left) + 1;
-    }  
+    } */
+	public int height(TreeNode r)
+    {
+        if (r == null)
+			return -1;
+		else
+		{
+			int hLeft = height(r.left);
+			int hRight = height(r.right);
+			if (hLeft < hRight)
+				return hRight + 1;
+			else
+				return hLeft + 1;
+		}
+    } 	
 }
