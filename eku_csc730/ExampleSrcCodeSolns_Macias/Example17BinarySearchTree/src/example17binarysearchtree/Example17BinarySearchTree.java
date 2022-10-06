@@ -81,7 +81,8 @@ public class Example17BinarySearchTree
                     bst.remove(input.nextInt());
                     break;
 				case 5:
-					bst.printBin();
+					//bst.printBin();
+					bst.reverseOrder();
 					break;
 				case 6:
 					//bst.countBin();
@@ -345,7 +346,8 @@ class BinarySearchTree
      * Write a function that displays all data in the binary search tree in decreasing order
 	 * Helper function
      */
-    public void printBin() {
+    //public void printBin() {
+	public void reverseOrder() {
 		reverseOrder(root);
 	}
 	
@@ -416,7 +418,7 @@ class BinarySearchTree
 		System.out.println("The height of the tree is " + (treeHeight(root) - 1));
 	}*/
 	public void height() {
-		System.out.println("The height of the tree is " + (height(root));
+		System.out.println("The height of the tree is " + height(root));
 	}
 	
     /**
