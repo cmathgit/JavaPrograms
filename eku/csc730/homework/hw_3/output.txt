@@ -1,0 +1,41 @@
+C:\Users\C\Desktop\JavaPrograms\csc730\hw_3>java homework3app.HomeWork3App
+Select from:
+1. Read Keys
+2. Generate Keys
+3. Sort
+0. Quit
+1
+Enter keys (negative to stop): 5 2 8 1 4 3 5 2 9 -1
+
+Select from:
+1. Read Keys
+2. Generate Keys
+3. Sort
+0. Quit
+3
+9 8 5 5 4 3 2 2 1
+
+Select from:
+1. Read Keys
+2. Generate Keys
+3. Sort
+0. Quit
+2
+Enter the number of keys: 10
+The following keys have been generated: 8 5 7 2 8 5 1 3 7 9
+
+Select from:
+1. Read Keys
+2. Generate Keys
+3. Sort
+0. Quit
+3
+9 8 8 7 7 5 5 3 2 1
+
+Select from:
+1. Read Keys
+2. Generate Keys
+3. Sort
+0. Quit
+0
+Thanks for using my program.

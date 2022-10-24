@@ -1,3 +1,4 @@
+#!/bin/bash
 # Run a Java Program in the current directory
 # CSC 815 Example Shell Script
 # Programmer: Cruz Macias
