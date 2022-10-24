@@ -5,6 +5,6 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		System.out.println("Hello CSC 815!");
+		System.out.println("Hello, from my Java Program, CSC 815!");
 	}
 }// end main class
