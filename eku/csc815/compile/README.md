@@ -7,6 +7,13 @@
 # Script Instructions
 # Include at most one parameter in the execution. This parameter must be a Java or C program. Try including zero, more than one, or the testfile.txt as your input.
 
+# Requirements
+```
+JDK 11+
+JRE 11+
+GCC
+```
+
 # To Run the Script without Parameters
 ```
 ./compile.sh
@@ -62,4 +69,51 @@ bash compile.sh y.java
 # To Run a C Program
 ```
 bash compile.sh x.c
+```
+
+# Install Java (Linux, Ubuntu 20.04)
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install openjdk-11-jdk-headless openjdk-11-jre-headless gcc
+```
+
+# How to check if the executable lives in the binaries directory (Ubuntu)
+```
+which javac
+which jar
+which java
+which gcc
+```
+
+# How to compile Java in Unix / Linux
+```
+javac -d classes/ -cp lib/sample-1.jar src/project/Example.java -verbose -Xlint:unchecked
+jar --create --file lib/sample-2.jar -C classes/ .
+```
+
+# How to compile Java in Ubuntu (forward slash)
+```
+javac -d classes/ -cp lib/sample-1.jar src/project/Example.java -verbose -Xlint:unchecked
+jar --create --file lib/sample-2.jar -C classes/ .
+```
+
+# How to run Java in Ubuntu (colon)
+```
+java -cp lib/sample-2.jar:lib/sample-1.jar project.Example > output.txt
+```
+
+# How to compile C in Ubuntu 
+```
+gcc main.c
+```
+
+# How to run C in Ubuntu 
+```
+./a.out
+```
+
+# or Try
+```
+./a.exe
 ```
