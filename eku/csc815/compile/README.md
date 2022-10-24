@@ -1,3 +1,4 @@
+# Solution for Week 4 Assignment not included due to Academic Integrity Policy but will be inlcuded upon course completion
 # CSC 815 Week 4 Assignment - Shell Script
 # Cruz Macias
 # Create a shell script "compile" that will compile and run a C or Java program.  The user will type "compile x.c" or "compile y.java" on the command line.  
