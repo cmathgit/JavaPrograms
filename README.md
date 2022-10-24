@@ -1,7 +1,12 @@
 # JavaPrograms
-# Various Java program solutions for Computer Science 730 Data Structures and Algorithms at Eastern Kentucky University
-# More courses may be inlcuded in the future
-# Personal Java projects for various programming problems
+```
+Various Java program solutions for the following graduate courses at Eastern Kentucky University
+Computer Science 730 Data Structures and Algorithms
+Computer Science 815 Computer Admin and Security
+More courses may be inlcuded in the future.
+Personal Java projects for various programming problems.
+Other programming languages may be included, e.g., c, C++, Python, HTML, ..., et cetera.
+```
 
 # set-up SSH (must have Git installed on your machine or use GitBash)
 # this example uses git.exe from Cygwin installation 
