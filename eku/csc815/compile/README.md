@@ -26,3 +26,40 @@ bash compile.sh y.java
 ```
 bash compile.sh x.c
 ```
+
+# Running compile.sh EKU Student VM version
+# You will need to install JDK-11 and GCC onto the VM
+
+# For javac
+```
+sudo apt install openjdk-11-jdk-headless
+which javac
+```
+
+# For java
+```
+sudo apt install openjdk-11-jre-headless
+which java
+```
+
+# For gcc
+```
+sudo apt install gcc
+which gcc
+```
+
+# Use the VM version of compile.sh
+# Run this command to run the script on the VM after installing the respective packages listed above
+```
+bash compile.sh
+```
+
+# To Run a Java Program
+```
+bash compile.sh y.java
+```
+
+# To Run a C Program
+```
+bash compile.sh x.c
+```
