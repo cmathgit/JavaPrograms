@@ -10,5 +10,5 @@ echo $(date)
 # touch cDataCollection_$varDate.txt
 # comment the above command and replace the filename below with the same YYYYMMDD as the file generated
 # collect live response data from the system and append to an existing file
-echo "System Date: " $(date) $(systeminfo) $(net user) $(net group) $(ipconfig /all) $(route print) $(arp -a) $(ipconfig /displaydns) $(netstat -abn) >> "cSysDataCollection_20230122.txt" 
-#echo "System Information: " $(systeminfo) >> "cDataCollection_20230122.txt" 
+echo "System Date: " $(date) $(systeminfo) $(net user) $(net group) $(ipconfig /all) $(route print) $(arp -a) $(ipconfig /displaydns) $(netstat -abn) >> "cSysDataCollection_Results.txt" 
+#echo "System Information: " $(systeminfo) >> "cDataCollection_Results.txt" 
