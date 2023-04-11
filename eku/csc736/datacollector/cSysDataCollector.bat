@@ -11,7 +11,7 @@ time /T
 :: touch cSysDataCollection_%DATE:~-4,4%%DATE:~-10,2%%DATE:~-7,2%.txt
 :: use this command to create a text file (.txt) inf the following format: cDataCollection_YYYYMMDD.txt
 :: collect live response data from the system and append to an existing file
-tocuh cSysDataCollection_Results.txt
+touch cSysDataCollection_Results.txt
 echo System Date: >> cSysDataCollection_Results.txt
 date /T >> cSysDataCollection_Results.txt
 echo System Time: >> cSysDataCollection_Results.txt
