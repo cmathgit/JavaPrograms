@@ -130,7 +130,9 @@ https://docs.oracle.com/en/java/javase/18/install/installation-jdk-microsoft-win
 Option 1. 
 Open the System Properties and add the paths with the javac, jar, and java executables to your PATH environment variable.
 Go to Settings >> System >> About >>  Advanced system settings >> Environment Variables >> System Variables >> Path >> Edit >> New 
-copy the paths, e.g., C:\Program Files\Java\jdk-18.0.2.1\bin, into here.
+copy the paths, e.g., C:\Program Files\Java\jdk-18.0.2.1\bin, into here. Also, consider adding the JAVA_HOME variable to your System Variables while you are in this menu.
+Under System Variables select New. In the variable name, type JAVA_HOME (or JRE_HOME for JRE installations). In Variable Value, copy and paste the filepath of your Java installation as shown above,
+e.g., "C:\Program Files\Java\jdk-18.0.2.1" or "C:\Program Files\Java\jdk-20".
 
 Option 2. Excute PATH command. Copy the return string (should have a list of paths semi-colon delimited). Append path to JDK binary and library directors separated by a semi-colon, e.g., 
 
