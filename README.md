@@ -132,7 +132,8 @@ Open the System Properties and add the paths with the javac, jar, and java execu
 Go to Settings >> System >> About >>  Advanced system settings >> Environment Variables >> System Variables >> Path >> Edit >> New 
 copy the paths, e.g., C:\Program Files\Java\jdk-18.0.2.1\bin, into here. Also, consider adding the JAVA_HOME variable to your System Variables while you are in this menu.
 Under System Variables select New. In the variable name, type JAVA_HOME (or JRE_HOME for JRE installations). In Variable Value, copy and paste the filepath of your Java installation as shown above,
-e.g., "C:\Program Files\Java\jdk-18.0.2.1" or "C:\Program Files\Java\jdk-20".
+e.g., "C:\Program Files\Java\jdk-18.0.2.1" or "C:\Program Files\Java\jdk-20". 
+
 
 Option 2. Excute PATH command. Copy the return string (should have a list of paths semi-colon delimited). Append path to JDK binary and library directors separated by a semi-colon, e.g., 
 
@@ -143,6 +144,23 @@ user> PATH C:\Program Files\Common Files\Oracle\Java\javapath;C:\cygwin64\bin;C:
 
 user> PATH
 PATH=C:\Program Files\Common Files\Oracle\Java\javapath;C:\cygwin64\bin;C:\Program Files\Java\jdk-18.0.2.1\lib;C:\Program Files\Java\jdk-18.0.2.1\bin
+```
+
+# Maven JUnit (Third Party Package) Repository
+```
+https://mvnrepository.com/artifact/junit/junit/4.13.2
+```
+
+# Adding Maven JUnit 4.13.2 (Third Party Package) Repo to your environment (Example API Call to Download Repo File(s))
+```
+curl -s https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar -o C:/JUnit/Junit-4.12.jar
+```
+
+# Add JUnit unit testing framework to your Windows Java Development Environment
+```
+To add the JUNIT_HOME variable to your System Variables while you are in this menu.
+Under System Variables select New. In the variable name, type JUNIT_HOME. In Variable Value, copy and paste the filepath of your Java installation as shown above,
+e.g., "C:\JUnit". 
 ```
 
 # How to compile in Windows (back slash)
