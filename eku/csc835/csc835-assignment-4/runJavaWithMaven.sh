@@ -4,7 +4,7 @@
 # Programmer: Cruz Macias
 # compile the java source code using the Maven Build Tool and place the class files containing the byte code in the maven-defined package and place it in the pwd 
 # copy MAVEN repos (third-party dependencies) into JUNit directory
-# curl -s https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar -o lib/Junit-4.12.jar
+# curl -s https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar -o lib/Junit-4.13.2.jar
 # curl -s https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar -o lib/junit-jupiter-api-5.10.0.jar
 # curl -s https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar -o lib/junit-jupiter-api-5.7.0.jar
 # curl -s https://repo1.maven.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar -o lib/junit-3.8.1.jar 
